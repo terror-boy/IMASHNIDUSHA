@@ -40,7 +40,7 @@ const { BYE_LOGO } = require('../config');
 let treue = Config.WORKTYPE == 'public' ? false : true
 //=====================================================================================
 
- Asena.addCommand({pattern: 'yt ?(.*)', fromMe: false,  deleteCommand: false, desc: Lang.YT_DESC}, (async (message, match) => { 
+ Asena.addCommand({pattern: 'yt ?(.*)', fromMe: treue,  deleteCommand: false, desc: Lang.YT_DESC}, (async (message, match) => { 
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text);    
     var searching = await message.client.sendMessage(message.jid,Lang.GETTING_VIDEOS,MessageType.text, {quoted: message.data});
@@ -60,7 +60,7 @@ let treue = Config.WORKTYPE == 'public' ? false : true
     return await message.client.deleteMessage(message.jid, {id: searching.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'yt ?(.*)', fromMe: true,  deleteCommand: false, desc: Lang.YT_DESC}, (async (message, match) => { 
+Asena.addCommand({pattern: 'yt ?(.*)', fromMe: treue,  deleteCommand: false, desc: Lang.YT_DESC}, (async (message, match) => { 
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text);    
     var searching = await message.client.sendMessage(message.jid,Lang.GETTING_VIDEOS,MessageType.text, {quoted: message.data});
